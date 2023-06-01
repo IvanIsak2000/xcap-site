@@ -1,0 +1,1 @@
+# My version of captcha for text digitization
