@@ -19,4 +19,5 @@ straightforward as possible.
 - `.gitignore`
 
 ### Changed
-- name `_` to  `xcap` 
+- name: `_` to  `xcap` 
+- `requirements.txt`: added fastapi
