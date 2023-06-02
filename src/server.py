@@ -5,27 +5,14 @@ from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+app.mount("/templates/home", StaticFiles(directory='templates/home'), name='templates/home')
 
-@app.get('/', response_class=HTMLResponse)
-async def home():
-    home_html = '''
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>xcap</title>
-    </head>
-    <body>
-        <h1>Hello!</h1>
-    </body>
-    </html>
+@app.get("/", response_class=HTMLResponse)
+async def  home():
+    with open ('templates/home/home.html', 'r') as file:
+        html_content = file.read()
+        return html_content
     
-    '''
-    return HTMLResponse(content = home_html)
 
 @app.get('/log_in/')
 async def log_in():
