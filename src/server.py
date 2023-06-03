@@ -1,35 +1,33 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
-
 app.mount('/images', StaticFiles(directory='images'), name='images')
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/", response_class = HTMLResponse)
 async def  home():
-    with open ('templates/home/home.html', 'r') as file:
-        html_content = file.read()
-        return html_content
-    
+    with open ('templates/home.html', 'r') as file:
+        home_page = file.read()
+        return home_page
 
-@app.get('/log_in/')
+@app.get('/log_in/', response_class = HTMLResponse)
 async def log_in():
-    '''
-    функция для  входа в аккаунт
-    '''
-    return HTMLResponse('log in page')
+    with open ('templates/log_in.html', 'r') as file:
+        log_in_page = file.read()
+        return log_in_page
 
-@app.get("/sign_up/")
+
+@app.get("/sign_up/", response_class = HTMLResponse)
 async def sign_up():
-    '''
-    фукнция для регистрации нового аккаунта
-    '''
+    with open ('templates/sign_up.html', 'r') as file:
+        sign_up_page = file.read()
+        return sign_up_page
+    
     return HTMLResponse('sign up page')
 
 
-@app.get('/API_KEY={TOKEN}/') 
+@app.get('/API_KEY={TOKEN}/', response_class=HTMLResponse) 
 async def get_request_with_token(TOKEN):
     '''
     функия для приёма запроса с токеном
@@ -44,3 +42,7 @@ async def get_request_with_token(TOKEN):
         return HTMLResponse('False')
 
 
+ 
+@app.post("/postdata")
+def postdata(username = Form(), userage=Form()):
+    return print({"name": username, "age": userage})
