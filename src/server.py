@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
-app.mount("/templates/home", StaticFiles(directory='templates/home'), name='templates/home')
+app.mount('/images', StaticFiles(directory='images'), name='images')
 
 @app.get("/", response_class=HTMLResponse)
 async def  home():
