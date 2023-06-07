@@ -1,220 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>xcap</title>
-    <link rel="icon" href="images/logo.svg" sizes="any" type="image/svg+xml">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-
-    <style>
-  .auth {
-    font-size: 40px;
-    color: rgb(210, 96, 26);
-    position: absolute;
-    top: 100px;
-    left: 400px;
-    background-color: rgb(255, 241, 225);
-  }
-
-  .send-button {
-    font-size: 40px;
-    color: rgb(210, 96, 26);
-    position: absolute;
-    top: 300px;
-    left: 40px;
+<head>
+  <link rel="icon" href="images/logo.svg" type="image/icon type">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xcap</title>
 
 
-  }
-  .button {
-      color: var(--dl-color-gray-black);
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-color: var(--dl-color-gray-black);
-      border-width: 1px;
-      border-radius: 4px;
-      background-color: var(--dl-color-gray-white);
+  <style>
+
+    body{
+   
+      background-color:  #fff1e1;
+      font-family: 'Comfortaa', cursive;
+
     }
-    .input {
-      color: var(--dl-color-gray-black);
-      cursor: auto;
-      padding: 0.5rem 1rem;
-      border-color: var(--dl-color-gray-black);
-      border-width: 1px;
-      border-radius: 4px;
-      background-color: var(--dl-color-gray-white);
+
+    img{
+      position: relative;
+      top:140px;
+      left: 180px;
+      height:600px ;
+      width: 600px;
     }
-    .textarea {
-      color: var(--dl-color-gray-black);
-      cursor: auto;
-      padding: 0.5rem;
-      border-color: var(--dl-color-gray-black);
-      border-width: 1px;
-      border-radius: 4px;
-      background-color: var(--dl-color-gray-white);
-    }
-    .list {
-      width: 100%;
-      margin: 1em 0px 1em 0px;
-      display: block;
-      padding: 0px 0px 0px 1.5rem;
-      list-style-type: none;
-      list-style-position: outside;
-    }
-    .list-item {
-      display: list-item;
-    }
-    .teleport-show {
-      display: flex !important;
-      transform: none !important;
-    }
-    .Heading {
-      font-size: 32px;
-      font-family: Inter;
-      font-weight: 700;
-      line-height: 1.15;
-      text-transform: none;
-      text-decoration: none;
-    }
-    .Content {
-      font-size: 16px;
-      font-family: Inter;
-      font-weight: 400;
-      line-height: 1.15;
-      text-transform: none;
-      text-decoration: none;
-    }
-    
-      .page-container {
-      width: 100%;
-      display: flex;
-      overflow: auto;
-      min-height: 100vh;
-      align-items: center;
-      flex-direction: column;
-      justify-content: flex-end;
-      background-color: rgb(255, 241, 225);
-    }
-    .page-text {
-      top: 164px;
-      left: 709px;
-      color: rgb(210, 96, 26);
+    .log-in-part{
+      font-size: 50px;
       position: absolute;
-      font-size: 60px;
+      top: 250px;
+      left: 1150px;
+      color: #d2601a;
+      border-color: #d2601a;
+      
     }
-    .page-textinput {
-      top: 286px;
-      left: 658px;
-      color: rgb(210, 96, 26);
-      width: 604px;
-      position: absolute;
-      font-size: 30px;
-      border-color: rgb(210, 96, 26);
-      border-width: 4px;
+    .input{
+      width: 400px;
+      height: 25px;
+      border: 2px solid #d2601a;
       border-radius: 30px;
-      padding-right: 0px;
-      background-color: rgb(255, 241, 225);
+      background-color: #fff1e1;
     }
-    .page-text1 {
-      top: 416px;
-      left: 678px;
-      color: rgb(210, 96, 26);
-      position: absolute;
-      font-size: 60px;
-    }
-    .page-textinput1 {
-      top: 518px;
-      left: 659px;
-      color: rgb(210, 96, 26);
-      width: 604px;
-      position: absolute;
-      font-size: 30px;
-      align-self: center;
-      border-color: rgb(210, 96, 26);
-      border-width: 4px;
+    .button{
+      color:  #fff1e1;
+      font-size: 20px;
+      width: 400px;
+      height: 30px;
+      border: 2px solid #d2601a;
       border-radius: 30px;
-      padding-right: 0px;
-      background-color: rgb(255, 241, 225);
-    }
-    .page-button {
-      top: 685px;
-      left: 643px;
-      color: rgb(210, 96, 26);
-      position: absolute;
-      font-size: 60px;
-      border-color: rgb(210, 96, 26);
-      border-width: 4px;
-      border-radius: 30px;
-      background-color: rgb(255, 241, 225);
-    }
-    .page-button1 {
-      top: 385px;
-      color: rgb(210, 96, 26);
-      right: 98px;
-      width: 173px;
-      height: 65px;
-      position: absolute;
-      font-size: 35px;
-      margin-left: 21px;
-      border-color: rgb(210, 96, 26);
-      border-width: 4px;
-      padding-left: 0px;
-      border-radius: 30px;
-      padding-right: 0px;
-      background-color: rgb(255, 241, 225);
-    }
-    .page-button2 {
-      top: 486px;
-      color: rgb(210, 96, 26);
-      right: 99px;
-      width: 173px;
-      height: 65px;
-      position: absolute;
-      font-size: 35px;
-      margin-left: 21px;
-      border-color: rgb(210, 96, 26);
-      border-width: 4px;
-      padding-left: 0px;
-      border-radius: 30px;
-      padding-right: 0px;
-      background-color: rgb(255, 241, 225);
+      background-color: #d2601a;
+
     }
 
-    
-    </style>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-      data-tag="font"
-    />
-  </head>
-  <body>
-    <div class="auth form">
-         <form action="authorization" method="post" class="auth form">
-          <p>
-              Name:<br>
-              <input name="username" />
-          </p>
-          <p>
-              Password:<br>
-              <input name="password" />
-          </p>
 
-          <button type="submit" class="send-button">Send</button>
+  </style>
 
-          <!-- <input type="submit" value="Send" /> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <img src="/images/logo.png" alt="logo">
 
-      </form>     
+    <div class="log-in-part">
+      <form action="authorization" method="post">
 
+        <p>Your username:<br>
+        <input  name="username" class="input"/></p>
+
+        <p>Your password:<br>
+        <input name="password" class="input"/></p>
+        
+          <button type="submit" class="button" >Log in </button>
+      
+      </form>
     </div>
-      <div class="page-container">
-        <button type="button" disabled="" class="page-button1 button">
-          Sign in
-        </button>
-        <button type="button" disabled="" class="page-button2 button">
-          About
-        </button>
-      </div>
-    </div>
-  </body>
+
+</body>
 </html>
