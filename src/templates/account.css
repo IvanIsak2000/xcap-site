@@ -1,0 +1,16 @@
+body{  
+background-color:  red;
+font-family: 'Comfortaa', cursive;
+}
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+li a {
+display: block;
+width: 60px;
+background-color:#fff1e1;
+}
