@@ -3,28 +3,26 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 import hashlib
-import os 
-import sys
 
 app = FastAPI()
-app.mount('/images', StaticFiles(directory='images'), name='images')
+app.mount('/images', StaticFiles(directory='src/images'), name='images')
 
 @app.get("/", response_class = HTMLResponse)
 async def  home():
-    with open ('templates/home.html', 'r') as file:
+    with open ('src/templates/home.html', 'r') as file:
         home_page = file.read()
         return home_page
 
 @app.get('/log_in/', response_class = HTMLResponse)
 async def log_in():
-    with open ('templates/log_in.html', 'r') as file:
+    with open ('src/templates/log_in.html', 'r') as file:
         log_in_page = file.read()
         return log_in_page
 
 
 @app.get("/sign_up/", response_class = HTMLResponse)
 async def sign_up():
-    with open ('templates/sign_up.html', 'r') as file:
+    with open ('src/templates/sign_up.html', 'r') as file:
         sign_up_page = file.read() 
         return sign_up_page
 
@@ -55,7 +53,9 @@ def authorization(username=Form(), password=Form()):
     }
     hashed_account_data = hashlib.md5(bytes(username + password, encoding='utf-8')).hexdigest()
     if hashed_account_data in fake_db:
-        return '''
+        account_data=fake_db[hashed_account_data]
+
+        return f'''
         <!DOCTYPE html>
         <html>
             <head>
@@ -71,23 +71,20 @@ def authorization(username=Form(), password=Form()):
             </head>
             <body>
                 <ul>
-                    <li>Username: {username}</li>
-                    <li>Settings: {settings}</a></li>
+                    <li>Username: {account_data['username']}</li>
+                    <li>Settings: {account_data['settings']}</a></li>
                     <li>Exit</li>
                 </ul>
             
             <div>
-                <p>Your API_KEY: {API_KEY}</p>
+                <p>Your API_KEY: {account_data['API_KEY']}</p>
             </div>
     
             </body>
-         </html>'''.format(
-            username = fake_db[hashed_account_data]['username'],
-            settings = fake_db[hashed_account_data]['settings'],
-            API_KEY = fake_db[hashed_account_data]['API_KEY'])
+         </html>'''
     else:
         return 'False'
 
 
-if __name__ == "__main__":
-    os.system('uvicorn server:app --reload')
+if __name__ == '__main__':
+    uvicorn.run(app, port = 8000, host = '0.0.0.0')
