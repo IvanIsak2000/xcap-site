@@ -1,7 +1,14 @@
-# My version of captcha for text digitization
+![home page](https://github.com/IvanIsak2000/xcap/assets/79650307/d5cebd6b-d64e-40d7-a4cb-30311b095fb0)
 
-Цели: 
+# GOALS
 
-1. попытаться создать полнофункциональны сайт с регистрацией/ входа в аккаунт для получения токена
-2. придумать принцип  автоматической капчи
-3. создать капчу
+# FUNCTIONS
+
+
+# START
+## Docker
+```bash
+docker pull ivanisak/xcap
+docker run -p 8000:8000 xcap
+
+```
