@@ -8,7 +8,11 @@
 # START
 ## Docker
 ```bash
-docker pull ivanisak/xcap
+docker pull ivanisak/xcap:V1
+```
+
+```bash
+
 docker run -p 8000:8000 xcap
 
 ```
