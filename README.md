@@ -8,7 +8,7 @@
 # START
 ## Docker
 ```bash
-docker pull ivanisak/xcap:V1
+docker pull ivanisak/xcap
 ```
 
 ```bash
