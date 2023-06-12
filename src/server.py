@@ -5,7 +5,7 @@ import uvicorn
 import hashlib
 
 app = FastAPI()
-app.mount('/images', StaticFiles(directory='src/images'), name='images')
+app.mount('/images', StaticFiles(directory='images'), name='images')
 
 @app.get("/", response_class = HTMLResponse)
 async def  home():
