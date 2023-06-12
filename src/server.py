@@ -9,20 +9,20 @@ app.mount('/images', StaticFiles(directory='images'), name='images')
 
 @app.get("/", response_class = HTMLResponse)
 async def  home():
-    with open ('src/templates/home.html', 'r') as file:
+    with open ('templates/home.html', 'r') as file:
         home_page = file.read()
         return home_page
 
 @app.get('/log_in/', response_class = HTMLResponse)
 async def log_in():
-    with open ('src/templates/log_in.html', 'r') as file:
+    with open ('templates/log_in.html', 'r') as file:
         log_in_page = file.read()
         return log_in_page
 
 
 @app.get("/sign_up/", response_class = HTMLResponse)
 async def sign_up():
-    with open ('src/templates/sign_up.html', 'r') as file:
+    with open ('templates/sign_up.html', 'r') as file:
         sign_up_page = file.read() 
         return sign_up_page
 
