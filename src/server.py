@@ -3,9 +3,11 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 import hashlib
+import toml
 
 app = FastAPI()
 app.mount('/images', StaticFiles(directory='images'), name='images')
+app.mount('/templates', StaticFiles(directory='templates'), name='templates')
 
 @app.get("/", response_class = HTMLResponse)
 async def  home():
@@ -27,26 +29,20 @@ async def sign_up():
         return sign_up_page
 
 
-@app.get('/API_KEY={TOKEN}/', response_class=HTMLResponse) 
+
+@app.get('/captcha/API_KEY/{TOKEN}/', response_class=HTMLResponse) 
 async def get_request_with_token(TOKEN):
-    '''
-    функия для приёма запроса с токеном
-    '''
-    
-    fake_db  = ['123']
-    
-    if TOKEN in fake_db:
-        return HTMLResponse('Correct API_KEY')
-    
-    else:
-        return HTMLResponse('False')
+    print(f'The site with token {TOKEN} wait captcha')
+    data = toml.load("config.toml")
+    ''' рандомная капча'''
+    return HTMLResponse('THIS CAPTCHA')
 
 
  
 @app.post("/log_in/authorization/", response_class=HTMLResponse)
-def authorization(username=Form(), password=Form()):
+async def authorization(username=Form(), password=Form()):
     fake_db = {
-        '96d5dbb402b62d37e8e39c77c110e5c9' :{
+        '' :{
             'username':'Iwan',
             'settings': 'Empty',
             'API_KEY' : '123'}
@@ -64,7 +60,7 @@ def authorization(username=Form(), password=Form()):
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>xcap</title>
-                <link rel="stylesheet" href="./account.css">
+                <link rel="stylesheet" href="templates/account.css">
                 <link rel="preconnect" href="https://fonts.googleapis.com">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
