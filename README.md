@@ -19,7 +19,7 @@ docker pull ivanisak/xcap
 
 ```bash
 
-docker run -p 8000:8000 xcap
+docker run -p 8000:8000 ivanisak/xcap
 
 ```
 ## Python
